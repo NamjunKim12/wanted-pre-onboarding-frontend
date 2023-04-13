@@ -1,7 +1,10 @@
+import { store } from "../../service/store/store";
+
 const BASE_URL = "https://www.pre-onboarding-selection-task.shop";
+const accessToken = store.getLocalStorage();
 
 const HTTP_METHOD = {
-  POST(data) {
+  POST_AUTH(data) {
     return {
       method: "POST",
       headers: {
@@ -10,18 +13,40 @@ const HTTP_METHOD = {
       body: JSON.stringify(data),
     };
   },
-  PUT(data) {
+  POST_TODO(data) {
+    return {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+  },
+  GET_TODO() {
+    return {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+  },
+  PUT_TODO(data) {
     return {
       method: "PUT",
       headers: {
+        Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
       body: data ? JSON.stringify(data) : null,
     };
   },
-  DELETE() {
+  DELETE_TODO() {
     return {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
     };
   },
 };

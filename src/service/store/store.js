@@ -1,4 +1,4 @@
-export const store = {
+const store = {
   setLocalStorage(token) {
     localStorage.setItem("accessToken", JSON.stringify(token));
   },
@@ -6,3 +6,5 @@ export const store = {
     return localStorage.getItem("accessToken");
   },
 };
+
+export { store };
