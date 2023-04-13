@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { validate } from '../service/util/validate'
+import { validate } from '../../service/util/validate'
 
 export default function SignUp() {
     const [email, setEmail] = useState('')

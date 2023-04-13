@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { validate } from '../service/util/validate'
+import { validate } from '../../service/util/validate'
 import { Link } from 'react-router-dom'
 
 export default function SignIn() {
