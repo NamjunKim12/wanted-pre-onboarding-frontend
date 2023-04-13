@@ -47,6 +47,7 @@ export default function SignIn() {
     <button
       data-testid="signup-button"
       onClick={handleSignUp}
+      //TODO: 중복 조건 리팩토링
       disabled={validate.email(email) && validate.password(password) ? false : true}
       style= {validate.email(email) && validate.password(password) ? 
         {

@@ -4,12 +4,16 @@ import { validate } from '../../service/util/validate'
 export default function SignUp() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [passwordCheck, setPasswordCheck] = useState('')
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
     }
     const handlePasswordChange = (e) => {
         setPassword(e.target.value)
+    }
+    const handlePasswordCheckChange = (e) => {
+        setPasswordCheck(e.target.value)
     }
     const handleSignUp = (e) => {
         e.preventDefault()
@@ -40,14 +44,26 @@ export default function SignUp() {
       onChange={handlePasswordChange}
       style= {{
         marginTop: '1rem',
+        marginBottom: '1rem',
+        width: '12rem',
+    }}
+    />
+    비밀번호 체크
+    <input
+      data-testid="password-input-check"
+      placeholder='패스워드와 동일하게 입력해주세요.'
+      onChange={handlePasswordCheckChange}
+      style= {{
+        marginTop: '1rem',
         width: '12rem',
     }}
     />
     <button
       data-testid="signup-button"
       onClick={handleSignUp}
-      disabled={validate.email(email) && validate.password(password) ? false : true}
-      style= {validate.email(email) && validate.password(password) ? 
+      //TODO: 중복 조건 리팩토링
+      disabled={validate.email(email) && validate.password(password) && password === passwordCheck? false : true}
+      style= {validate.email(email) && validate.password(password) &&  password === passwordCheck? 
         {
           backgroundColor: 'black',
           marginTop: '1rem',
