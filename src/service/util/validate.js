@@ -5,8 +5,7 @@ export const validate = {
    * @returns {boolean}
    */
   email(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
+    return email.includes("@");
   },
 
   /**
