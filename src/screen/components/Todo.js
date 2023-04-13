@@ -1,10 +1,8 @@
 import React from "react";
+import todoApi from "../../story/api/todo";
 
-export default function Todo({ id, todo, isCompleted = false }) {
-  const handleRemoveTodo = (e) => {
-    e.preventDefault();
-  };
-  const handleModifyTodo = (e) => {
+export default function Todo({ id, todo, isCompleted = false, onRemove }) {
+  const handleModifyTodo = async (e) => {
     e.preventDefault();
   };
   return (
@@ -16,7 +14,11 @@ export default function Todo({ id, todo, isCompleted = false }) {
       <button data-testid="modify-button" onClick={handleModifyTodo}>
         수정
       </button>
-      <button data-testid="delete-button" onClick={handleRemoveTodo}>
+      <button
+        data-testid="delete-button"
+        type="button"
+        onClick={() => onRemove(id)}
+      >
         삭제
       </button>
     </li>

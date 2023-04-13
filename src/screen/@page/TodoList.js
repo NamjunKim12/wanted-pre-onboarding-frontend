@@ -15,9 +15,13 @@ export default function TodoList() {
   const handleAddTodo = async (e) => {
     e.preventDefault();
     const response = await todoApi.createTodoList(newTodo);
-    console.log(response);
     setTodoItem([...todoItem, response]);
-    console.log(todoItem);
+    setNewTodo("");
+  };
+
+  const onRemove = async (id) => {
+    await todoApi.deleteTodoList(id);
+    setTodoItem(todoItem.filter((item) => item.id !== id));
   };
 
   return (
@@ -35,7 +39,13 @@ export default function TodoList() {
       </form>
       <ul>
         {todoItem.map((item) => (
-          <Todo key={item.id} isCompleted={item.isCompleted} todo={item.todo} />
+          <Todo
+            key={item.id}
+            id={item.id}
+            isCompleted={item.isCompleted}
+            todo={item.todo}
+            onRemove={onRemove}
+          />
         ))}
       </ul>
     </>

@@ -13,10 +13,10 @@ const todoApi = {
       HTTP_METHOD.PUT_TODO(data)
     );
   },
-  deleteTodoList(data, id) {
-    return request(
-      `${BASE_URL}/api/todos/${id}`,
-      HTTP_METHOD.DELETE_TODO(data)
+  deleteTodoList(id) {
+    return requestWithoutJson(
+      `${BASE_URL}/todos/${id}`,
+      HTTP_METHOD.DELETE_TODO()
     );
   },
 };
