@@ -1,7 +1,6 @@
 import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 import { SignIn, SignUp, TodoList, Error } from "./screen/@page";
-import PrivateRoute from "./screen/@page/Route/PrivateRoute";
-import PublicRoute from "./screen/@page/Route/PublicRoute";
+import { PrivateRoute, PublicRoute } from "./screen/@page/Route";
 import PATH from "./service/util/path";
 
 export default function Router() {
