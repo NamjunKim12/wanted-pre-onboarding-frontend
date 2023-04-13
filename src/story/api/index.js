@@ -20,7 +20,7 @@ const HTTP_METHOD = {
         Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({ todo: data }),
     };
   },
   GET_TODO() {
