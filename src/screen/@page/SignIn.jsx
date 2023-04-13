@@ -15,12 +15,15 @@ export default function SignIn() {
   const handlePasswordChange = (e) => {
       setPassword(e.target.value)
   }
-  const handleSignUp = async(e) => {
+  const handleSignIn = async(e) => {
       e.preventDefault()
-      const { access_token } = await authApi.signIn(email, password).data;
-      store.setLocalStorage(access_token);
-      navigate('/todo');
-
+      const {access_token} = await authApi.signIn(email, password);
+      setEmail('')
+      setPassword('')
+      if(access_token) {
+        store.setLocalStorage(access_token)
+        navigate('/todo')
+      }
   }
   return (
     <form style={{
@@ -52,7 +55,7 @@ export default function SignIn() {
     />
     <button
       data-testid="signup-button"
-      onClick={handleSignUp}
+      onClick={handleSignIn}
       //TODO: 중복 조건 리팩토링
       disabled={validate.email(email) && validate.password(password) ? false : true}
       style= {validate.email(email) && validate.password(password) ? 

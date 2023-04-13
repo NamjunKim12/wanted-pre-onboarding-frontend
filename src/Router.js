@@ -7,7 +7,7 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<PublicRoute />} isRestrict={true}>
+        <Route element={<PublicRoute />}>
           <Route path="/" element={<Navigate to="/signIn" replace />} />
           <Route path="/signIn" element={<SignIn />} />
           <Route path="/signUp" element={<SignUp />} />

@@ -1,23 +1,31 @@
 import React, {useState} from 'react'
 import { validate } from '../../service/util/validate'
+import { useNavigate } from 'react-router-dom'
+import authApi from '../../story/api/auth'
 
 export default function SignUp() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [passwordCheck, setPasswordCheck] = useState('')
+    const navigate = useNavigate();
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordCheck, setPasswordCheck] = useState('');
 
     const handleEmailChange = (e) => {
-        setEmail(e.target.value)
-    }
+        setEmail(e.target.value);
+    };
     const handlePasswordChange = (e) => {
-        setPassword(e.target.value)
-    }
+        setPassword(e.target.value);
+    };
     const handlePasswordCheckChange = (e) => {
-        setPasswordCheck(e.target.value)
-    }
-    const handleSignUp = (e) => {
-        e.preventDefault()
+        setPasswordCheck(e.target.value);
+    };
+    const handleSignUp = async(e) => {
+        e.preventDefault();
       //TODO: 회원가입 기능 구현
+        const response = await authApi.signUp(email, password);
+        if(response.status === 201) {
+            navigate('/signin');
+        }
     }
   return (
     <form style={{

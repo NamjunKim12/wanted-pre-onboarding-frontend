@@ -3,6 +3,6 @@ export const store = {
     localStorage.setItem("accessToken", JSON.stringify(token));
   },
   getLocalStorage() {
-    return JSON.parse(localStorage.getItem("accessToken"));
+    return localStorage.getItem("accessToken");
   },
 };

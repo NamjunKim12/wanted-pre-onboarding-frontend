@@ -1,4 +1,4 @@
-const BASE_URL = "https://www.pre-onboarding-selection-task.shop/";
+const BASE_URL = "https://www.pre-onboarding-selection-task.shop";
 
 const HTTP_METHOD = {
   POST(data) {

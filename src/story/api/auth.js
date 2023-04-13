@@ -1,4 +1,4 @@
-import { BASE_URL, HTTP_METHOD, request } from ".";
+import { BASE_URL, HTTP_METHOD, request, requestWithoutJson } from ".";
 
 const authApi = {
   signIn(email, password) {
@@ -8,7 +8,7 @@ const authApi = {
     );
   },
   signUp(email, password) {
-    return request(
+    return requestWithoutJson(
       `${BASE_URL}/auth/signup`,
       HTTP_METHOD.POST({ email, password })
     );
