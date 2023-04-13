@@ -3,7 +3,7 @@ const store = {
     localStorage.setItem("accessToken", JSON.stringify(token));
   },
   getLocalStorage() {
-    return localStorage.getItem("accessToken");
+    return JSON.parse(localStorage.getItem("accessToken"));
   },
 };
 
