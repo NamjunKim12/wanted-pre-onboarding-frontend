@@ -1,7 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { validate } from '../service/util/validate'
 import { Link } from 'react-router-dom'
 
 export default function SignIn() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleEmailChange = (e) => {
+      setEmail(e.target.value)
+  }
+  const handlePasswordChange = (e) => {
+      setPassword(e.target.value)
+  }
+  const handleSignUp = (e) => {
+      e.preventDefault()
+      //TODO: 로그인 기능 구현
+  }
   return (
     <form style={{
         display: 'flex',
@@ -12,11 +26,10 @@ export default function SignIn() {
     <input
       data-testid="email-input"
       placeholder='이메일을 입력해주세요'
-      onChange={()=>{}}
+      onChange={handleEmailChange}
       style= {{
         marginTop: '1rem',
         marginBottom: '1rem',
-        color: 'white',
         width: '12rem',
     }}
     />
@@ -25,22 +38,31 @@ export default function SignIn() {
       type="password"
       data-testid="password-input"
       placeholder='8자 이상'
-      onChange={()=>{}}
+      onChange={handlePasswordChange}
       style= {{
         marginTop: '1rem',
-        color: 'white',
         width: '12rem',
     }}
     />
     <button
-      data-testid="signin-button"
-      onClick={()=>{}}
-      style= {{
-        backgroundColor: 'black',
-        marginTop: '1rem',
-        color: 'white',
-        width: '12rem',
-    }}
+      data-testid="signup-button"
+      onClick={handleSignUp}
+      disabled={validate.email(email) && validate.password(password) ? false : true}
+      style= {validate.email(email) && validate.password(password) ? 
+        {
+          backgroundColor: 'black',
+          marginTop: '1rem',
+          color: 'white',
+          width: '12rem',
+          cursor: 'pointer',
+        } : {
+          backgroundColor: 'gray',
+          marginTop: '1rem',
+          color: 'white',
+          width: '12rem',
+          cursor: 'not-allowed',
+        }
+      }
     >
       로그인
     </button>

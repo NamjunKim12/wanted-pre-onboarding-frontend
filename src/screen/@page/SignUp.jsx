@@ -13,7 +13,7 @@ export default function SignUp() {
     }
     const handleSignUp = (e) => {
         e.preventDefault()
-        console.log(validate.email(email), validate.password(password))
+      //TODO: 회원가입 기능 구현
     }
   return (
     <form style={{
