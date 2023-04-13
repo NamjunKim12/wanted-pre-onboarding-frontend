@@ -24,6 +24,15 @@ export default function TodoList() {
     setTodoItem(todoItem.filter((item) => item.id !== id));
   };
 
+  // const onUpdate = async (id, isCompleted) => {
+  //   const todo = prompt("수정할 내용을 입력해주세요.");
+  //   if (todo === null || todo.trim() === "") return;
+  //   await todoApi.updateTodoList({ todo, isCompleted }, id);
+  //   setTodoItem((prev) =>
+  //     prev.map((item) => (item.id === id ? { ...item, todo } : item))
+  //   );
+  // };
+
   return (
     <>
       <form>
@@ -45,6 +54,7 @@ export default function TodoList() {
             isCompleted={item.isCompleted}
             todo={item.todo}
             onRemove={onRemove}
+            // onUpdate={onUpdate}
           />
         ))}
       </ul>

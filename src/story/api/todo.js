@@ -9,7 +9,7 @@ const todoApi = {
   },
   updateTodoList(data, id) {
     return requestWithoutJson(
-      `${BASE_URL}/api/todos/${id}`,
+      `${BASE_URL}/todos/${id}`,
       HTTP_METHOD.PUT_TODO(data)
     );
   },
