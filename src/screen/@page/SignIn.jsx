@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
 import { validate } from '../../service/util/validate'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import authApi from '../../story/api/auth'
+import { store } from '../../service/store/store'
 
 export default function SignIn() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -12,9 +15,12 @@ export default function SignIn() {
   const handlePasswordChange = (e) => {
       setPassword(e.target.value)
   }
-  const handleSignUp = (e) => {
+  const handleSignUp = async(e) => {
       e.preventDefault()
-      //TODO: 로그인 기능 구현
+      const { access_token } = await authApi.signIn(email, password).data;
+      store.setLocalStorage(access_token);
+      navigate('/todo');
+
   }
   return (
     <form style={{
