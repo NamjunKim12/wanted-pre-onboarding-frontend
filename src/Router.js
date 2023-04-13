@@ -1,21 +1,25 @@
 import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
-import { SignIn, SignUp, TodoList } from "./screen/@page";
+import { SignIn, SignUp, TodoList, Error } from "./screen/@page";
 import PrivateRoute from "./screen/@page/Route/PrivateRoute";
 import PublicRoute from "./screen/@page/Route/PublicRoute";
+import PATH from "./service/util/path";
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<PublicRoute />}>
-          <Route path="/" element={<Navigate to="/signIn" replace />} />
-          <Route path="/signIn" element={<SignIn />} />
-          <Route path="/signUp" element={<SignUp />} />
-          <Route path="*" element={<>잘못된 페이지입니다.</>} />
+          <Route
+            path={PATH.HOME}
+            element={<Navigate to={PATH.SIGN_IN} replace />}
+          />
+          <Route path={PATH.SIGN_IN} element={<SignIn />} />
+          <Route path={PATH.SIGN_UP} element={<SignUp />} />
+          <Route path={PATH.NOT_FOUND} element={<Error />} />
         </Route>
         <Route element={<PrivateRoute />}>
-          <Route path="/todo" element={<TodoList />} />
-          <Route path="*" element={<>잘못된 페이지입니다.</>} />
+          <Route path={PATH.TODO} element={<TodoList />} />
+          <Route path={PATH.NOT_FOUND} element={<Error />} />
         </Route>
       </Routes>
     </BrowserRouter>
