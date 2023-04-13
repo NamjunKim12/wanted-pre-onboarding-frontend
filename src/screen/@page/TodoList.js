@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import todoApi from "../../story/api/todo";
-import Todo from "../components/Todo";
+import Todo from "../components/TodoList/Todo";
 
 export default function TodoList() {
   const [todoItem, setTodoItem] = useState([]);
