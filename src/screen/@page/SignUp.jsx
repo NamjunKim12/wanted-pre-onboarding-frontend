@@ -40,6 +40,7 @@ export default function SignUp() {
     비밀번호
     <input
       data-testid="password-input"
+      type="password"
       placeholder='8자 이상 입력해주세요.'
       onChange={handlePasswordChange}
       style= {{
@@ -51,6 +52,7 @@ export default function SignUp() {
     비밀번호 체크
     <input
       data-testid="password-input-check"
+      type="password"
       placeholder='패스워드와 동일하게 입력해주세요.'
       onChange={handlePasswordCheckChange}
       style= {{
