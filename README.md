@@ -1,4 +1,11 @@
-## 원티드 프리온보딩 프론트엔드 - 선발 과제 (프론트엔드)
+## 원티드 프리온보딩 프론트엔드 - 선발 과제
 
-### 1. 과제 설명
-[링크](https://github.com/walking-sunset/selection-task)
+### 배포 링크 
+
+[바로가기](https://wanted-pre-onboarding-frontend-git-main-namjunkim12.vercel.app/)
+
+### 구동 방식
+```
+$ npm install
+$ npm start
+```
