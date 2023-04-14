@@ -12,7 +12,7 @@ export default function Todo({ id, todo, isCompleted, onRemove, onUpdate }) {
   if (isEdit)
     return (
       <li>
-        <TodoCheckbox todo={todo} isCompleted={isCompleted} id={id} />
+        <TodoCheckbox todo={todo} isCompleted={isCompleted} id={id} isEdit={isEdit}/>
         <ToDoEdit
           todo={todo}
           toggleEdit={toggleEdit}
@@ -26,7 +26,6 @@ export default function Todo({ id, todo, isCompleted, onRemove, onUpdate }) {
   return (
     <li>
       <TodoCheckbox todo={todo} isCompleted={isCompleted} id={id} />
-      <span>{todo}</span>
       <button data-testid="modify-button" onClick={toggleEdit}>
         수정
       </button>
