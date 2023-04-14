@@ -8,7 +8,6 @@ export default function SignUp() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -16,12 +15,9 @@ export default function SignUp() {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-  const handlePasswordCheckChange = (e) => {
-    setPasswordCheck(e.target.value);
-  };
+
   const handleSignUp = async (e) => {
     e.preventDefault();
-    //TODO: 회원가입 기능 구현
     const response = await authApi.signUp(email, password);
     if (response.status === 201) {
       navigate("/signin");
@@ -59,32 +55,15 @@ export default function SignUp() {
           width: "12rem",
         }}
       />
-      비밀번호 체크
-      <input
-        data-testid="password-input-check"
-        type="password"
-        placeholder="패스워드와 동일하게 입력해주세요."
-        onChange={handlePasswordCheckChange}
-        style={{
-          marginTop: "1rem",
-          width: "12rem",
-        }}
-      />
       <button
         data-testid="signup-button"
         onClick={handleSignUp}
         //TODO: 중복 조건 리팩토링
         disabled={
-          validate.email(email) &&
-          validate.password(password) &&
-          password === passwordCheck
-            ? false
-            : true
+          validate.email(email) && validate.password(password) ? false : true
         }
         style={
-          validate.email(email) &&
-          validate.password(password) &&
-          password === passwordCheck
+          validate.email(email) && validate.password(password)
             ? {
                 backgroundColor: "black",
                 marginTop: "1rem",
