@@ -24,6 +24,7 @@ const HTTP_METHOD = {
     };
   },
   GET_TODO() {
+    const accessToken = store.getLocalStorage();
     return {
       method: "GET",
       headers: {

@@ -18,8 +18,6 @@ export default function SignIn() {
   const handleSignIn = async (e) => {
     e.preventDefault();
     const { access_token } = await authApi.signIn(email, password);
-    setEmail("");
-    setPassword("");
     if (access_token) {
       store.setLocalStorage(access_token);
       navigate("/todo");

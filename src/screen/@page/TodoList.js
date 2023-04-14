@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import todoApi from "../../story/api/todo";
 import Todo from "../components/TodoList/Todo";
+import { store } from "../../service/store/store";
 
 export default function TodoList() {
   const [todoItem, setTodoItem] = useState([]);
   const [newTodo, setNewTodo] = useState("");
 
   useEffect(() => {
-    todoApi.getTodoList().then((res) => {
-      setTodoItem([...res]);
-    });
+    const token = store.getLocalStorage();
+    if (token) {
+      todoApi.getTodoList().then((res) => {
+        setTodoItem(res);
+      });
+    }
   }, []);
 
   const handleAddTodo = async (e) => {
