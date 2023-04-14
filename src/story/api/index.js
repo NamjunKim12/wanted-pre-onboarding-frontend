@@ -1,7 +1,6 @@
 import { store } from "../../service/store/store";
 
 const BASE_URL = "https://www.pre-onboarding-selection-task.shop";
-const accessToken = store.getLocalStorage();
 
 const HTTP_METHOD = {
   POST_AUTH(data) {
@@ -14,6 +13,8 @@ const HTTP_METHOD = {
     };
   },
   POST_TODO(data) {
+    const accessToken = store.getLocalStorage();
+
     return {
       method: "POST",
       headers: {
@@ -33,6 +34,8 @@ const HTTP_METHOD = {
     };
   },
   PUT_TODO(data) {
+    const accessToken = store.getLocalStorage();
+
     return {
       method: "PUT",
       headers: {
@@ -43,6 +46,8 @@ const HTTP_METHOD = {
     };
   },
   DELETE_TODO() {
+    const accessToken = store.getLocalStorage();
+
     return {
       method: "DELETE",
       headers: {
